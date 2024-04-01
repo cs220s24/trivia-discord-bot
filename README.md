@@ -1,4 +1,4 @@
-# trvia-discord-bot
+# trivia-discord-bot
 A fun discord trivia bot! (Full details TBD.)
 
 ### Contributers:
