@@ -1,8 +1,8 @@
 # trvia-discord-bot
 
 
-#Contributers:
+# Contributers:
 Michael Romero, Rafael Garcia, Christine Colvin, Jack Drabic
 
-#Description
+# Description
 A fun discord trivia bot!
