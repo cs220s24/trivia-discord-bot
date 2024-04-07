@@ -52,7 +52,6 @@
 #         exit(1)
 #     main()
 
-# bot.py
 import os
 
 import discord
@@ -63,20 +62,23 @@ TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
 
 intents = discord.Intents.default()
+intents.message_content = True
+
 client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-    for guild in client.guilds:
-        if guild.name == GUILD:
-            break
+    print(f'{client.user.name} has connected to Discord!')
 
-    print(
-        f'{client.user} is connected to the following guild:\n'
-        f'{guild.name}(id: {guild.id})'
-    )
+@client.event
+async def on_message(message):
+    if message.author == client.user:
+        return
+    
+    print(message.content.strip().lower())
 
-    members = '\n - '.join([member.name for member in guild.members])
-    print(f'Guild Members:\n - {members}')
+    if message.content.strip().lower() == 'ping':
+        response = 'pong!'
+        await message.channel.send(response)
 
 client.run(TOKEN)
