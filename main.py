@@ -75,8 +75,6 @@ async def on_message(message):
     if message.author == client.user:
         return
     
-    print(message.content.strip().lower())
-
     if message.content.strip().lower() == 'ping':
         response = 'pong!'
         await message.channel.send(response)
