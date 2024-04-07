@@ -79,4 +79,8 @@ async def on_message(message):
         response = 'pong!'
         await message.channel.send(response)
 
+    if message.content.strip().lower() == 'does my bf like me':
+        response = 'no🤣'
+        await message.channel.send(response)
+
 client.run(TOKEN)
