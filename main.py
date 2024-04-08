@@ -47,7 +47,8 @@ def main():
         quiz_questions = {
             'Are brownies good? Yes or no': 'Yes',
             'What country was I created in?': 'US',
-            'What class is this for?': 'Devops'
+            'What class is this for?': 'Devops',
+            'What is the capital of France?': 'Paris'
         }
 
         if message.content.strip().lower() == 'start quiz':
