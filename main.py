@@ -43,6 +43,10 @@ def main():
             response = message.author
             await message.channel.send(response)
 
+        if message.content.strip().lower() == 'meow':
+            response = 'meow:3'
+            await message.channel.send(response)
+
         # Respond to "start quiz" with a brief quiz
         quiz_questions = {
             'Are brownies good? Yes or no': 'Yes',
