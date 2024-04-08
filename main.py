@@ -46,7 +46,7 @@ def main():
         # Respond to "start quiz" with a brief quiz
         quiz_questions = {
             'Are brownies good? Yes or no': 'Yes',
-            'What country are we currently in?': 'US',
+            'What country was I created in?': 'US',
             'What class is this for?': 'Devops'
         }
 
