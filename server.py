@@ -25,6 +25,7 @@ def create_app():
        connection.close()
 
        return jsonify(questions)
+    return app
        
     
 def connectToMySQL():
