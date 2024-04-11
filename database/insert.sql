@@ -1,1 +1,1 @@
--- Hello world
+USE DATABASE 'trivia_db';
