@@ -67,6 +67,7 @@ def main():
             for question, answer in quiz_questions.items():
                 time.sleep(1)
                 await message.channel.send(question)
+                time.sleep(1)
 
                 response = await client.wait_for('message')
 
