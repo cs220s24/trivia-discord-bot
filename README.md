@@ -31,3 +31,9 @@ A fun discord trivia bot! (Full details TBD.)
 - source .venv/bin/activate
 - pip install -r requirements.txt
 - Finally run the program using: python3 main.py
+
+### FLASK_SECRET_KEY
+- Use python3 command in terminal to enter the python3 interactive evirnonemnt
+- Type import secrets
+- Type print(secrets.token_hex())
+- Whatever was printed out, paste that into the . env file between the quotation marks in FLASK_SECRET_KEY =""
