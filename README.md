@@ -33,7 +33,7 @@ A fun discord trivia bot! (Full details TBD.)
 - Finally run the program using: python3 main.py
 
 ### FLASK_SECRET_KEY
-- Use python3 command in terminal to enter the python3 interactive evirnonemnt
+- Type: python3 in terminal to enter the python3 REPLenvironment
 - Type import secrets
 - Type print(secrets.token_hex())
 - Whatever was printed out, paste that into the . env file between the quotation marks in FLASK_SECRET_KEY =""
