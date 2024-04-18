@@ -22,9 +22,9 @@ A fun discord bot that inquires trivia questions!
 - Create an instance with Voc-key and allow HTTP Traffic--other default settings are fine
 - When the insance is up and running, grab its Public IPv4 address
 - In a new terminal window, use the command: 
-#### ssh -i ~/.ssh/labsuser.pem ec2-user@<Public IPv4 address> to ssh into the ec2 instance
+#### ssh -i ~/.ssh/labsuser.pem ec2-user@<Public IPv4 address>
 - Then use the command: 
-#### sudo yum install git to install git
+#### sudo yum install git 
 - Once git is installed, clone the repo with: 
 #### git clone https://github.com/cs220s24/trivia-discord-bot.git
 - CD into the repo
