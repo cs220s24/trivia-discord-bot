@@ -10,7 +10,7 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY')
     
-    @app.route('/getQuestions')
+    @app.route('/getQuestions') # Grabs the questions from the database
     def getQuestions():
        cursor, connection = connectToMySQL()
        use_db = 'USE trivia_db'

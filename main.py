@@ -20,8 +20,13 @@ def fetch_questions(cursor):
 
     return questions
 
-def main():
 
+def main():
+    '''
+    Activates and runs the Discord bot.
+    Asks several trivia questions and responds to specific commands.
+    Scores the user based on the number of correct answers.
+    '''
     # Load the environment variables
     TOKEN = os.getenv('DISCORD_TOKEN')
     GUILD = os.getenv('DISCORD_GUILD')
@@ -126,6 +131,7 @@ def main():
                 await message.channel.send('You got **' + str(num_correct) + '** correct and **' + str(num_incorrect) + '** incorrect.')
     
     client.run(TOKEN)
+
 
 def connectToMySQL():
     '''
