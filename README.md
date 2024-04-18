@@ -1,5 +1,5 @@
 # trivia-discord-bot
-A fun discord trivia bot! (Full details TBD.)
+A fun discord bot that inquires trivia questions!
 
 ### Contributers:
 - [Christine Colvin](https://github.com/christinecolvin)
@@ -19,18 +19,33 @@ A fun discord trivia bot! (Full details TBD.)
 
 ### Running on an AWS Instance
 - Launch AWS Learning Academy Lab
-- Create an instance with Vockey and allow HTTP Traffic. Other default settings are fine
+- Create an instance with Voc-key and allow HTTP Traffic--other default settings are fine
 - When the insance is up and running, grab its Public IPv4 address
-- In a new terminal window, use the command: ssh -i ~/.ssh/labsuser.pem ec2-user@<Public IPv4 address> to ssh into the ec2 instance
-- Do a: sudo yum install git to install git
-- Once git is installed, clone the repo with: git clone https://github.com/cs220s24/trivia-discord-bot.git
-- cd into the repo
-- Create your .env file with: nano .env. Follow the steps from the .env file above
+- In a new terminal window, use the command: 
+```
+ssh -i ~/.ssh/labsuser.pem ec2-user@<Public IPv4 address>
+```
+- Then use the command: 
+```
+sudo yum install git
+```
+- Once git is installed, clone the repo with: 
+```
+git clone https://github.com/cs220s24/trivia-discord-bot.git
+```
+- CD into the repo
+- Create your .env file with: nano .env
+- Follow the steps from the .env file above
 - Create a virtual environment and install dependencies with:
-- python3 -m venv .venv
-- source .venv/bin/activate
-- pip install -r requirements.txt
-- Finally run the program using: python3 main.py
+```
+1. python3 -m venv .venv
+2. source .venv/bin/activate
+3. pip install -r requirements.txt
+```
+- Finally run the program using: 
+```
+python3 main.py
+```
 
 ### FLASK_SECRET_KEY
 - Type: python3 in terminal to enter the python3 REPLenvironment
