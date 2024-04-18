@@ -52,3 +52,11 @@ python3 main.py
 - Type import secrets
 - Type print(secrets.token_hex())
 - Whatever was printed out, paste that into the . env file between the quotation marks in FLASK_SECRET_KEY =""
+
+### SYSTEMD
+
+- Follow all the steps to run the AWS instance.
+- sudo cp discord_bot.service /etc/systemd/system
+- sudo systemctl enable discord_bot.service
+- sudo systemctl start discord_bot.service
+- Bug: Cannot connect to mySQl. Is a mySQL.service file needed?
