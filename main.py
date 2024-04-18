@@ -109,7 +109,21 @@ def main():
             time.sleep(1)
 
             # Send a message with the number of correct and incorrect answers
-            await message.channel.send('Quiz complete!\nYou got **' + str(num_correct) + '** correct and **' + str(num_incorrect) + '** incorrect.')
+            await message.channel.send('Quiz complete!\n')
+
+            time.sleep(1)
+            
+            # All questions correct
+            if num_correct == len(quiz_questions):
+                await message.channel.send(':tada: Perfect score! You got all the questions correct. :tada:')
+
+            # All questions incorrect
+            elif num_incorrect == len(quiz_questions):
+                await message.channel.send(':sob: Oh no! You got all the questions incorrect. :sob:')
+            
+            # Some questions correct
+            else:
+                await message.channel.send('You got **' + str(num_correct) + '** correct and **' + str(num_incorrect) + '** incorrect.')
     
     client.run(TOKEN)
 
