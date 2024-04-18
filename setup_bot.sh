@@ -4,7 +4,7 @@
 if [ ! -d ".venv" ]; then
     echo "Creating virtual environment..."
     python3 -m venv .venv
-
+fi
 # Step 2: Install requirements
 echo "Setting up virtual environment and installing requirements..."
 source .venv/bin/activate
