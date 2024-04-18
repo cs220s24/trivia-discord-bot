@@ -4,14 +4,9 @@
 if [ ! -d ".venv" ]; then
     echo "Creating virtual environment..."
     python3 -m venv .venv
-<<<<<<< HEAD
 fi # Close if statement
 
 # Step 1: Install requirements
-=======
-fi
-# Step 2: Install requirements
->>>>>>> 686b3e430b43411395dbf1ce266b3a14a3c3b15e
 echo "Setting up virtual environment and installing requirements..."
 source .venv/bin/activate
 pip install -r requirements.txt
