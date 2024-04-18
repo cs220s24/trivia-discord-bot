@@ -1,0 +1,8 @@
+[Unit]
+Description=Runs Trivia Discord Bot
+
+[Service]
+ExecStart=/home/ec2-user/trivia-discord-bot/.venv/bin/python3 /home/ec2-user/trivia-discord-bot/main.py
+
+[Install]
+WantedBy=multi-user.target
