@@ -55,7 +55,7 @@ python3 main.py
 
 ### SYSTEMD
 
-- Follow all the steps to run the AWS instance.
+- Follow all of the steps to run the AWS instance.
 - sudo cp discord_bot.service /etc/systemd/system
 - sudo systemctl enable discord_bot.service
 - sudo systemctl start discord_bot.service
