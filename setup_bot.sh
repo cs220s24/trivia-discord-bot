@@ -14,9 +14,10 @@ pip install -r requirements.txt
 # Step 3: Create .env file
 echo "Creating .env file..."
 
-read -p "Enter your Discord bot token (obtained from Developer Portal): " discord_token
+read -sp "Enter your Discord bot token (obtained from Developer Portal): " discord_token
 echo "DISCORD_TOKEN=\"$discord_token\"" > .env
 
+echo ""
 read -p "Enter the name of the Discord server you want to connect to: " discord_guild
 echo "DISCORD_GUILD=\"$discord_guild\"" >> .env
 
@@ -31,6 +32,7 @@ read -sp "Enter your MySQL password: " mysql_password
 echo "MYSQL_PASSWORD=\"$mysql_password\"" >> .env
 
 # Step 4: Create the 'trivia_db' database
+echo ""
 echo "Creating 'trivia_db' database..."
 mysql -u $mysql_username -p -e "DROP DATABASE IF EXISTS trivia_db; CREATE DATABASE trivia_db;"
 
