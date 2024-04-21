@@ -30,6 +30,8 @@ def main():
     # Load the environment variables
     TOKEN = os.getenv('DISCORD_TOKEN')
     GUILD = os.getenv('DISCORD_GUILD')
+    MYSQL_USERNAME = os.getenv('MYSQL_USERNAME')
+    MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
 
     # Create a Discord client
     intents = discord.Intents.default()
@@ -84,7 +86,7 @@ def main():
             num_incorrect = 0
 
             # Fetch the questions from the database
-            cursor, connection = connectToMySQL()
+            cursor, connection = connectToMySQL(MYSQL_USERNAME, MYSQL_PASSWORD)
             quiz_questions = fetch_questions(cursor)
 
             # Close the cursor and connection
@@ -132,12 +134,11 @@ def main():
     
     client.run(TOKEN)
 
-
-def connectToMySQL():
+def connectToMySQL(mysql_username, mysql_password):
     '''
     Connects to MySQL and returns a cursor and connection object.
     '''
-    cnx = mysql.connector.connect(user='project', password='project',
+    cnx = mysql.connector.connect(user=mysql_username, password=mysql_password,
                                   host='localhost',
                                   database='trivia_db')
     cursor = cnx.cursor(dictionary=True)

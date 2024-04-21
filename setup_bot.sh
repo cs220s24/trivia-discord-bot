@@ -13,23 +13,37 @@ pip install -r requirements.txt
 
 # Step 3: Create .env file
 echo "Creating .env file..."
-echo "FLASK_SECRET_KEY = \"$(python3 -c 'import secrets; print(secrets.token_hex())')\"" > .env
+
+read -p "Enter your Discord bot token (obtained from Developer Portal): " discord_token
+echo "DISCORD_TOKEN=\"$discord_token\"" > .env
+
+read -p "Enter the name of the Discord server you want to connect to: " discord_guild
+echo "DISCORD_GUILD=\"$discord_guild\"" >> .env
+
+echo "Creating Flask secret key..."
+echo "FLASK_SECRET_KEY=\"$(python3 -c 'import secrets; print(secrets.token_hex())')\"" >> .env
+
+echo "Creating MySQL connection details..."
+read -p "Enter your MySQL username: " mysql_username
+echo "MYSQL_USERNAME=\"$mysql_username\"" >> .env
+
+read -sp "Enter your MySQL password: " mysql_password
+echo "MYSQL_PASSWORD=\"$mysql_password\"" >> .env
 
 # Step 4: Create the 'trivia_db' database
-read -p "Enter your MySQL username: " mysql_username
 echo "Creating 'trivia_db' database..."
 mysql -u $mysql_username -p -e "DROP DATABASE IF EXISTS trivia_db; CREATE DATABASE trivia_db;"
 
 echo "Populating the database..."
 cd database
+echo "Creating tables..."
 mysql -u $mysql_username -p trivia_db < create.sql
+echo "Inserting data..."
 mysql -u $mysql_username -p trivia_db < insert.sql
 cd ..
 
 # Step 5: Connect to the MySQL database
 echo "Configuring MySQL connection..."
-read -p "Enter your MySQL username: " mysql_username
-read -sp "Enter your MySQL password: " mysql_password
 sed -i.bak "s/user='project'/user='$mysql_username'/; s/password='project'/password='$mysql_password'/" main.py
 rm main.py.bak
 
