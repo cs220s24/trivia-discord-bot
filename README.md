@@ -60,3 +60,23 @@ python3 main.py
 - sudo systemctl enable discord_bot.service
 - sudo systemctl start discord_bot.service
 - Bug: Cannot connect to mySQl. Is a mySQL.service file needed?
+
+### ACTIVATING MYSQL / MARIADB in EC2 INSTANCE
+
+- sudo dnf install mariadb105-server (105 may or may not be necessary, have to check)
+- sudo systemctl start mariadb
+- sudo mysql_secure_installation
+- Interactive part:
+    - Press enter when prompted for password for root
+    - Switch to socket authentication: n
+    - Change the root password: n
+    - Remove anonymous users: Y
+    - Disallow root login remotely: Y
+    - Remove test database and access to it: Y
+    - Reload privilege tables: Y
+- sudo mysql -u root -p "" (The "" probably not necessary i have to test)
+- CREATE USER 'bot'@localhost IDENTIFIED BY 'bot';
+- ^c to exit
+- mariadb -u bot -p
+
+
