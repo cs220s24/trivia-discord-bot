@@ -10,6 +10,8 @@ A fun discord bot that inquires trivia questions!
 ### .env file
 - Grab your discord bot's token and put it in the .env file with
 - DISCORD_TOKEN = <DISCORD_TOKEN>
+- MYSQL_USERNAME= <PASSWORD>
+- MYSQL_PASSWORD= <USERNAME>
 
 ### Enable priviledged gateway for message content
 - Go to to https://discord.com/developers/applications/
@@ -74,9 +76,22 @@ python3 main.py
     - Disallow root login remotely: Y
     - Remove test database and access to it: Y
     - Reload privilege tables: Y
-- sudo mysql -u root -p "" (The "" probably not necessary i have to test)
-- CREATE USER 'bot'@localhost IDENTIFIED BY 'bot';
-- ^c to exit
-- mariadb -u bot -p
-
+- sudo mysql -u root -p
+    - For password just enter, it's empty
+    - ALTER USER 'root'@'localhost' IDENTIFIED BY 'root'; (because you need a password)
+- USE trivia_db;
+- CREATE TABLE trivia_questions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question VARCHAR(255) NOT NULL,
+    answer VARCHAR(255) NOT NULL
+);
+- INSERT INTO trivia_questions (question, answer) VALUES
+('Are brownies good? Respond "YES" or "NO"', 'Yes'),
+('What country was I created in?', 'US'),
+('What class was I developed for?', 'DevOps'),
+('What is the capital of France?', 'Paris'),
+('What question number is this?', '5');
+- sudo systemctl stop mariadb
+- sudo systemctl enable mariadb
+- sudo systemctl start mariadb
 
