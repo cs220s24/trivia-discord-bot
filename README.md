@@ -1,5 +1,5 @@
 # trivia-discord-bot
-A fun discord bot that inquires trivia questions!
+A fun discord bot that inquires trivia questions for users to interact with. Users can start a quiz to begin the game & find out their score. 
 
 ### Contributers:
 - [Christine Colvin](https://github.com/christinecolvin)
@@ -47,19 +47,18 @@ git clone https://github.com/cs220s24/trivia-discord-bot.git
 python3 main.py
 ```
 
-### FLASK_SECRET_KEY
-- Type: python3 in terminal to enter the python3 REPLenvironment
-- Type import secrets
-- Type print(secrets.token_hex())
-- Whatever was printed out, paste that into the . env file between the quotation marks in FLASK_SECRET_KEY =""
-
 ### SYSTEMD
 
 - Follow all of the steps to run the AWS instance.
-- sudo cp discord_bot.service /etc/systemd/system
-- sudo systemctl enable discord_bot.service
-- sudo systemctl start discord_bot.service
-- Bug: Cannot connect to mySQl. Is a mySQL.service file needed?
+  ```
+  sudo cp discord_bot.service /etc/systemd/system
+  ```
+  ```
+  sudo systemctl enable discord_bot.service
+  ```
+  ```
+  sudo systemctl start discord_bot.service
+  ```
 
 ### ACTIVATING MYSQL / MARIADB in EC2 INSTANCE
 
