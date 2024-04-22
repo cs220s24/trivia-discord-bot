@@ -21,9 +21,6 @@ echo ""
 read -p "Enter the name of the Discord server you want to connect to: " discord_guild
 echo "DISCORD_GUILD=\"$discord_guild\"" >> .env
 
-echo "Creating Flask secret key..."
-echo "FLASK_SECRET_KEY=\"$(python3 -c 'import secrets; print(secrets.token_hex())')\"" >> .env
-
 echo "Creating MySQL connection details..."
 read -p "Enter your MySQL username: " mysql_username
 echo "MYSQL_USERNAME=\"$mysql_username\"" >> .env
