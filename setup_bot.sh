@@ -16,14 +16,11 @@ import python-dotenv
 echo "Creating .env file..."
 
 read -p "Enter your Discord bot token (obtained from Developer Portal): " discord_token
-echo TOKEN = os.getenv('DISCORD_TOKEN')
+echo "DISCORD_TOKEN=\"$discord_token\"" > .env
 
-
+echo ""
 read -p "Enter the name of the Discord server you want to connect to: " discord_guild
 echo "DISCORD_GUILD=\"$discord_guild\"" >> .env
-
-echo "Creating Flask secret key..."
-echo "FLASK_SECRET_KEY=\"$(python3 -c 'import secrets; print(secrets.token_hex())')\"" >> .env
 
 echo "Creating MySQL connection details..."
 read -p "Enter your MySQL username: " mysql_username
@@ -33,6 +30,7 @@ read -sp "Enter your MySQL password: " mysql_password
 echo "MYSQL_PASSWORD=\"$mysql_password\"" >> .env
 
 # Step 4: Create the 'trivia_db' database
+echo ""
 echo "Creating 'trivia_db' database..."
 mysql -u $mysql_username -p -e "DROP DATABASE IF EXISTS trivia_db; CREATE DATABASE trivia_db;"
 
