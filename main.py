@@ -60,6 +60,11 @@ def main():
             response = 'pong!'
             await message.channel.send(response)
 
+        # Respond to "whoami" with the user's name
+        if message.content.strip().lower() == 'whoami':
+            response = 'You are ' + str(message.author) + '!'
+            await message.channel.send(response)
+
         # Respond to "start quiz" with a brief quiz
         if message.content.strip().lower() == 'start quiz':
             
