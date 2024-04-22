@@ -160,3 +160,7 @@ python3 main.py
 - sudo systemctl enable mariadb
 - sudo systemctl start mariadb
 
+### Docker
+- docker build -t discord_bot .
+- docker run -d discord_bot
+
