@@ -10,12 +10,14 @@ fi # Close if statement
 echo "Setting up virtual environment and installing requirements..."
 source .venv/bin/activate
 pip install -r requirements.txt
+import python-dotenv 
 
 # Step 3: Create .env file
 echo "Creating .env file..."
 
 read -p "Enter your Discord bot token (obtained from Developer Portal): " discord_token
-echo "DISCORD_TOKEN=\"$discord_token\"" > .env
+echo TOKEN = os.getenv('DISCORD_TOKEN')
+
 
 read -p "Enter the name of the Discord server you want to connect to: " discord_guild
 echo "DISCORD_GUILD=\"$discord_guild\"" >> .env

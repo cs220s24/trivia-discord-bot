@@ -5,6 +5,7 @@ import discord
 import mysql.connector
 
 import time
+from dotenv import load_dotenv
 
 def fetch_questions(cursor):
     '''
