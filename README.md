@@ -9,6 +9,7 @@ A fun discord bot that inquires trivia questions for users to interact with. Use
 
 ### Prerequisites
 
+- Discord | ([Website](https://discord.com))
 - MySQL | ([Download](https://dev.mysql.com/downloads/mysql/), [Set-Up Tutorial](https://dev.mysql.com/doc/mysql-getting-started/en/))
 
 # Installation
