@@ -15,8 +15,7 @@ pip install -r requirements.txt
 echo "Creating .env file..."
 
 read -sp "Enter your Discord bot token (obtained from Developer Portal): " discord_token
-echo "DISCORD_TOKEN=\"$discord_token\"" > .env
-
+echo "DISCORD_TOKEN=\"$discord_token\"" >> .env
 echo ""
 read -p "Enter the name of the Discord server you want to connect to: " discord_guild
 echo "DISCORD_GUILD=\"$discord_guild\"" >> .env
