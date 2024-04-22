@@ -15,8 +15,9 @@ import python-dotenv
 # Step 3: Create .env file
 echo "Creating .env file..."
 
-read -p "Enter your Discord bot token (obtained from Developer Portal): " discord_token
-echo "DISCORD_TOKEN=\"$discord_token\"" > .env
+# read -p "Enter your Discord bot token (obtained from Developer Portal): " discord_token
+echo TOKEN = os.getenv('DISCORD_TOKEN')
+
 
 echo ""
 read -p "Enter the name of the Discord server you want to connect to: " discord_guild
