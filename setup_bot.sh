@@ -11,22 +11,21 @@ echo "Setting up virtual environment and installing requirements..."
 source .venv/bin/activate
 pip install -r requirements.txt
 
-
 # Step 3: Create .env file
 echo "Creating .env file..."
 
-# read -sp "Enter your Discord bot token (obtained from Developer Portal): " discord_token
-# echo "DISCORD_TOKEN=\"$discord_token\"" > .env
-# echo ""
-# read -p "Enter the name of the Discord server you want to connect to: " discord_guild
-# echo "DISCORD_GUILD=\"$discord_guild\"" >> .env
+read -sp "Enter your Discord bot token (obtained from Developer Portal): " discord_token
+echo "DISCORD_TOKEN=\"$discord_token\"" > .env
+echo ""
+read -p "Enter the name of the Discord server you want to connect to: " discord_guild
+echo "DISCORD_GUILD=\"$discord_guild\"" >> .env
 
-# echo "Creating MySQL connection details..."
-#read -p "Enter your MySQL username: " mysql_username
-#echo "MYSQL_USERNAME=\"$mysql_username\"" >> .env
+echo "Creating MySQL connection details..."
+read -p "Enter your MySQL username: " mysql_username
+echo "MYSQL_USERNAME=\"$mysql_username\"" >> .env
 
-#read -sp "Enter your MySQL password: " mysql_password
-#echo "MYSQL_PASSWORD=\"$mysql_password\"" >> .env
+read -sp "Enter your MySQL password: " mysql_password
+echo "MYSQL_PASSWORD=\"$mysql_password\"" >> .env
 
 # Step 4: Create the 'trivia_db' database
 echo ""
