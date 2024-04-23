@@ -31,7 +31,7 @@ EOF
 
 # Step 2: Create the 'trivia_db' database
 echo "Creating and populating database..."
-sudo -u mysql root -p <<EOF
+sudo mysql -u root -p <<EOF
 ALTER USER 'root'@'localhost; IDENTIFIED BY '$mysql_root_password';
 CREATE DATABASE trivia_db;
 USE trivia_db;
