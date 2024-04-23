@@ -10,11 +10,10 @@ sudo systemctl start mariadb
 # Secure MySQL installation
 echo "Securing MariaDB installation..."
 echo "Creating MariaDB user \"root\"..."
-read -sp "Create a password for user \"root\": " mysql_root_password
 sudo mysql_secure_installation <<EOF
 
 # Enter password for "root" when prompted
-$mysql_root_password
+<enter>
 # Switch to socket authentication
 n
 # Change root password
@@ -32,7 +31,7 @@ EOF
 # Step 2: Create the 'trivia_db' database
 echo "Creating and populating database..."
 sudo mysql -u root -p <<EOF
-ALTER USER 'root'@'localhost; IDENTIFIED BY '$mysql_root_password';
+ALTER USER 'root'@'localhost'; IDENTIFIED BY 'root';
 CREATE DATABASE trivia_db;
 USE trivia_db;
 CREATE TABLE trivia_questions ( id INT AUTO_INCREMENT PRIMARY KEY, question VARCHAR(255) NOT NULL, answer VARCHAR(255) NOT NULL );
