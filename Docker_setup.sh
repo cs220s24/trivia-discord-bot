@@ -20,7 +20,7 @@ read -p "Enter the IPv4 address you used to connect to the instance: " ipv4_addr
 
 # Logout of the EC2 instance
 echo "Logging out..."
-logout
+exit
 
 # Reconnect to the EC2 instance using SSH
 echo "Reconnecting to the EC2 instance..."
@@ -47,9 +47,12 @@ echo "MYSQL_USERNAME=\"$mysql_username\"" >> .env
 read -sp "Enter your MySQL password: " mysql_root_password
 echo "MYSQL_PASSWORD=\"$mysql_root_password\"" >> .env
 
+echo ""
+echo "Setting MySQL host..."
 echo "MYSQL_HOST=\"mysql_container\"" >> .env
 
 # Step 4: Build container images and run containers
+echo ""
 echo "Installing MySQL container image..."
 docker pull mysql
 
