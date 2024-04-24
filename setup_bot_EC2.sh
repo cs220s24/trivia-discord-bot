@@ -10,11 +10,13 @@ sudo systemctl start mariadb
 
 # Secure MySQL installation
 echo "Securing MariaDB installation..."
-echo "Creating MariaDB user \"root\" with no password..."
+echo "Creating MariaDB user \"root\"..."
+
+read -sp "Create a password for \"root\" user: " root_password
 sudo mysql_secure_installation <<EOF
 
 # Enter password for "root" when prompted
-<enter>
+$root_password
 # Switch to socket authentication
 n
 # Change root password
@@ -35,10 +37,7 @@ echo "MariaDB user \"root\" has been created."
 
 echo ""
 echo "Allowing \"root\" user to connect to MariaDB..."
-sudo mysql -u root -p -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
-
-echo ""
-echo "Password for \"root\" user has been set to \"root\"." # THIS IS CURRENTLY FOR TESTING PURPOSES ONLY
+sudo mysql -u root -p -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$root_password';"
 
 echo ""
 echo "Creating and populating database..."
