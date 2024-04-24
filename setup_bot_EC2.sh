@@ -78,6 +78,7 @@ pip install -r requirements.txt
 # Step #6: Create .env file
 echo ""
 echo "Creating .env file..."
+
 read -sp "Enter your Discord bot token (obtained from Developer Portal): " discord_token
 echo "DISCORD_TOKEN=\"$discord_token\"" > .env
 echo ""
@@ -93,6 +94,7 @@ read -sp "Enter your MariaDB password: " mysql_password
 echo "MYSQL_PASSWORD=\"$mysql_password\"" >> .env
 
 # Step #7: Configure MariaDB connection
+echo ""
 echo ""
 echo "Configuring MariaDB connection..."
 sed -i.bak "s/user='project'/user='$mysql_username'/; s/password='project'/password='$mysql_password'/" main.py
