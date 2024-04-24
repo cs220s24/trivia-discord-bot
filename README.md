@@ -12,7 +12,7 @@ A fun discord bot that inquires trivia questions for users to interact with. Use
 - Discord | ([Website](https://discord.com))
 - MySQL | ([Download](https://dev.mysql.com/downloads/mysql/), [Set-Up Tutorial](https://dev.mysql.com/doc/mysql-getting-started/en/))
 
-# Installation
+# Installation - Run the bot locally
 
 ### 0. Clone the repo
 Once you are all set up, press the green **<> Code** button to gain a link to clone the repository.
@@ -115,19 +115,6 @@ git clone https://github.com/cs220s24/trivia-discord-bot.git
 python3 main.py
 ```
 
-### SYSTEMD
-
-- Follow all of the steps to run the AWS instance.
-  ```
-  sudo cp discord_bot.service /etc/systemd/system
-  ```
-  ```
-  sudo systemctl enable discord_bot.service
-  ```
-  ```
-  sudo systemctl start discord_bot.service
-  ```
-
 ### ACTIVATING MYSQL / MARIADB in EC2 INSTANCE
 
 - sudo dnf install mariadb105-server (105 may or may not be necessary, have to check)
@@ -144,7 +131,8 @@ python3 main.py
 - sudo mysql -u root -p
     - For password just enter, it's empty
     - ALTER USER 'root'@'localhost' IDENTIFIED BY 'root'; (because you need a password)
-- USE trivia_db;
+-   CREATE DATABASE trivia_db;
+-   USE trivia_db;
 - CREATE TABLE trivia_questions (
     id INT AUTO_INCREMENT PRIMARY KEY,
     question VARCHAR(255) NOT NULL,
@@ -156,9 +144,23 @@ python3 main.py
 ('What class was I developed for?', 'DevOps'),
 ('What is the capital of France?', 'Paris'),
 ('What question number is this?', '5');
+- exit
 - sudo systemctl stop mariadb
 - sudo systemctl enable mariadb
 - sudo systemctl start mariadb
+
+### SYSTEMD
+
+- Follow all of the steps to run the AWS instance.
+  ```
+  sudo cp discord_bot.service /etc/systemd/system
+  ```
+  ```
+  sudo systemctl enable discord_bot.service
+  ```
+  ```
+  sudo systemctl start discord_bot.service
+  ```
 
 ### Docker
 - docker build -t discord_bot .
