@@ -162,7 +162,13 @@ python3 main.py
   sudo systemctl start discord_bot.service
   ```
 
-### Docker
+### Docker on AWS
+- sudo yum install -y docker
+- sudo systemctl enable docker
+- sudo systemctl start docker
+- sudo usermod -a -G docker ec2-user
+- ***Now the user must logout of the Ec2 instance and log back in***
+- Don't forget to cd back into the repo
 - docker pull mysql
 - docker run -d --name mysql_container -e MYSQL_ROOT_PASSWORD=<password_for_root> -p 3306:3306 mysql
 - docker restart mysql_container (the <mysql_container_name>)
