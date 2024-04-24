@@ -27,7 +27,7 @@ echo "Creating .env file..."
 
 #read -sp "Enter your MySQL password: " mysql_password
 #echo "MYSQL_PASSWORD=\"$mysql_password\"" >> .env
-
+ 
 # Step 4: Create the 'trivia_db' database
 echo ""
 echo "Creating 'trivia_db' database..."
