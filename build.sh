@@ -38,3 +38,8 @@ fi
 if ! docker network inspect discord_bot_network > /dev/null 2>&1; then
   docker network create discord_bot_network
 fi
+
+echo "Build complete."
+
+chmod +x up
+chmod +x down
