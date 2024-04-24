@@ -163,6 +163,26 @@ python3 main.py
   ```
 
 ### Docker
-- docker build -t discord_bot .
-- docker run -d discord_bot
-
+- docker pull mysql
+- docker run -d --name mysql_container -e MYSQL_ROOT_PASSWORD=<password_for_root> -p 3306:3306 mysql
+- docker restart mysql_container (the <mysql_container_name>)
+- docker build -t discord_bot . (This builds the image for the discord_bot)
+- docker run -d discord_bot (This creates the container and runs it)
+- docker network create discord_bot (Creates a network where the mysql and discord_bot containers will be in)
+- docker network connect discord_bot <discord_bot container name>
+- docker exec -it mysql_container  mysql -u root -p (we need to populate the database for the docker mysql). Password will be whatever you passed for MYSQL_ROOT_PASSWORD
+- CREATE DATABASE trivia_db;
+- USE trivia_db;
+- CREATE TABLE trivia_questions (
+id INT AUTO_INCREMENT PRIMARY KEY,
+question VARCHAR(255) NOT NULL,
+answer VARCHAR(255) NOT NULL
+);
+- INSERT INTO trivia_questions (question, answer) VALUES
+('Are brownies good? Respond "YES" or "NO"', 'Yes'),
+('What country was I created in?', 'US'),
+('What class was I developed for?', 'DevOps'),
+('What is the capital of France?', 'Paris'),
+('What question number is this?', '5');
+- exit
+- docker network connect discord_bot mysql_container
