@@ -12,7 +12,7 @@ A fun discord bot that inquires trivia questions for users to interact with. Use
 - Discord | ([Website](https://discord.com))
 - MySQL | ([Download](https://dev.mysql.com/downloads/mysql/), [Set-Up Tutorial](https://dev.mysql.com/doc/mysql-getting-started/en/))
 
-# Installation
+# Installation - Run the bot locally
 
 ### 0. Clone the repo
 Once you are all set up, press the green **<> Code** button to gain a link to clone the repository.
