@@ -1,6 +1,9 @@
 # trivia-discord-bot
 A fun discord bot that inquires trivia questions for users to interact with. Users can start a quiz to begin the game & find out their score. 
 
+## System Architecture: 
+![diagram](triviaDiagramDockerized.png)
+
 ### Contributers:
 - [Christine Colvin](https://github.com/christinecolvin)
 - [Jack Drabic](https://github.com/JackJack7890)
