@@ -2,7 +2,7 @@
 
 # Step 1: Install MariaDB
 echo "Installing MariaDB..."
-sudo dnf install -y mariadb-server
+sudo dnf install -y mariadb105-server
 
 # Start MariaDB service
 echo "Starting MariaDB service..."
@@ -30,8 +30,13 @@ Y
 EOF
 
 # Step #2: Create the 'trivia_db' database
+echo "Allowing \"root\" user to connect to MariaDB..."
+sudo mysql -u root -p -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';"
+
+echo "Password for \"root\" user has been set to \"root\"." # THIS IS CURRENTLY FOR TESTING PURPOSES ONLY
+
 echo "Creating and populating database..."
-sudo mysql -u root -p -e "DROP DATABASE IF EXISTS trivia_db; CREATE DATABASE trivia_db;"
+mysql -u root -p -e "DROP DATABASE IF EXISTS trivia_db; CREATE DATABASE trivia_db;"
 
 echo "Populating the database..."
 cd database
