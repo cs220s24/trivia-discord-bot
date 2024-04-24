@@ -15,11 +15,26 @@ read -p "Enter your MySQL username: " mysql_username
 echo "MYSQL_USERNAME=\"$mysql_username\"" >> .env
 
 read -sp "Enter your MySQL password: " mysql_root_password
-echo "MYSQL_PASSWORD=\"$mysql_root_password\"" >> .env
+echo "MYSQL_ROOT_PASSWORD=\"$mysql_root_password\"" >> .env
 
 echo ""
 echo "Setting MySQL host..."
 echo "MYSQL_HOST=\"mysql_container\"" >> .env
 
 # Step 2: Build container images - TODO FROM HERE !!!!!!!!!!!!!!!!!!!!!
-echo ""
+echo "Creating the MySQL Image..."
+
+# If the image doesn't already exist, create it
+if ! docker image inspect mysql > /dev/null 2>&1; then
+  docker pull mysql
+fi
+
+# If the discord_bot image doesn't already exist, create it
+if ! docker image inspect discord_bot > /dev/null 2>&1; then
+  docker build -t discord_bot .
+fi
+
+# Create a network that will hold the containers for both images
+if ! docker network inspect discord_bot_network > /dev/null 2>&1; then
+  docker network create discord_bot_network
+fi

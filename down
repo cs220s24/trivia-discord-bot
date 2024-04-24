@@ -1,0 +1,2 @@
+docker rm -f trivia_bot
+docker rm -f mysql_container

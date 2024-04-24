@@ -32,7 +32,7 @@ def main():
     TOKEN = os.getenv('DISCORD_TOKEN')
     GUILD = os.getenv('DISCORD_GUILD')
     MYSQL_USERNAME = os.getenv('MYSQL_USERNAME')
-    MYSQL_PASSWORD = os.getenv('MYSQL_PASSWORD')
+    MYSQL_ROOT_PASSWORD = os.getenv('MYSQL_ROOT_PASSWORD')
     MYSQL_HOST = os.getenv('MYSQL_HOST')
 
     # Create a Discord client
@@ -73,7 +73,7 @@ def main():
             num_incorrect = 0
 
             # Fetch the questions from the database
-            cursor, connection = connectToMySQL(MYSQL_USERNAME, MYSQL_PASSWORD, MYSQL_HOST)
+            cursor, connection = connectToMySQL(MYSQL_USERNAME, MYSQL_ROOT_PASSWORD, MYSQL_HOST)
             quiz_questions = fetch_questions(cursor)
 
             # Close the cursor and connection

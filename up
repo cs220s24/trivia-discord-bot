@@ -1,0 +1,7 @@
+MYSQL_ROOT_PASSWORD=$(grep '^MYSQL_ROOT_PASSWORD=' .env | cut -d '=' -f2)
+docker run -d --name mysql_container -e MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD -p 3306:3306 mysql
+docker restart mysql_container
+docker run -d --name trivia_bot discord_bot
+docker network connect discord_bot_network trivia_bot
+docker exec -it mysql_container mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS trivia_db; USE trivia_db; CREATE TABLE IF NOT EXISTS trivia_questions ( id INT AUTO_INCREMENT PRIMARY KEY, question VARCHAR(255) NOT NULL, answer VARCHAR(255) NOT NULL ); INSERT INTO trivia_questions (question, answer) VALUES ('Are brownies good? Respond \"YES\" or \"NO\"', 'Yes'), ('What country was I created in?', 'US'), ('What class was I developed for?', 'DevOps'), ('What is the capital of France?', 'Paris'), ('What question number is this?', '5');"
+docker network connect discord_bot_network mysql_container
