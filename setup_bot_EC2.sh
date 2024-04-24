@@ -31,7 +31,7 @@ Y
 Y
 EOF
 
-# Step #2: Create the 'trivia_db' database
+# Step #2: Create the 'trivia_db' database.
 echo ""
 echo "MariaDB user \"root\" has been created."
 
