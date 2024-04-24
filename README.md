@@ -163,19 +163,27 @@ python3 main.py
   ```
 
 ### Docker on AWS
+- sudo yum install -y git
+- git clone <REPO>
 - sudo yum install -y docker
 - sudo systemctl enable docker
 - sudo systemctl start docker
 - sudo usermod -a -G docker ec2-user
 - ***Now the user must logout of the Ec2 instance and log back in***
-- Don't forget to cd back into the repo
+- cd trivia-discord-bot
+- nano .env
+    DISCORD_TOKEN=<TOKEN>
+    DISCORD_GUILD=<SERVER_NAME>
+    MYSQL_USERNAME=<USERNAME>
+    MYSQL_PASSWORD=<PASSWORD>
+    MYSQL_HOST="mysql_container" <CONTAINER NAME> (We are just using mysql_container for the container name)
 - docker pull mysql
 - docker run -d --name mysql_container -e MYSQL_ROOT_PASSWORD=<password_for_root> -p 3306:3306 mysql
 - docker restart mysql_container (the <mysql_container_name>)
 - docker build -t discord_bot . (This builds the image for the discord_bot)
-- docker run -d discord_bot (This creates the container and runs it)
+- docker run -d --name trivia_bot discord_bot (This creates the container and runs it)
 - docker network create discord_bot (Creates a network where the mysql and discord_bot containers will be in)
-- docker network connect discord_bot <discord_bot container name>
+- docker network connect discord_bot trivia_bot <the discord_bot container name>
 - docker exec -it mysql_container  mysql -u root -p (we need to populate the database for the docker mysql). Password will be whatever you passed for MYSQL_ROOT_PASSWORD
 - CREATE DATABASE trivia_db;
 - USE trivia_db;
