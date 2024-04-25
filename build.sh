@@ -21,7 +21,7 @@ echo ""
 echo "Setting MySQL host..."
 echo "MYSQL_HOST=\"mysql_container\"" >> .env
 
-# Step 2: Build container images - TODO FROM HERE !!!!!!!!!!!!!!!!!!!!!
+# Step 2: Build container images
 echo "Creating the MySQL Image..."
 
 # If the image doesn't already exist, create it

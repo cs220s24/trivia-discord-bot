@@ -78,9 +78,10 @@ To play a brief quiz with the bot, post the message **`start quiz`**.
 
 ### .env file
 - Grab your discord bot's token and put it in the .env file with
-- DISCORD_TOKEN = <DISCORD_TOKEN>
-- MYSQL_USERNAME= <PASSWORD>
-- MYSQL_PASSWORD= <USERNAME>
+- DISCORD_TOKEN =<DISCORD_TOKEN>
+- MYSQL_USERNAME=<PASSWORD>
+- MYSQL_ROOT_PASSWORD=<USERNAME>
+- MYSQL_HOST =<HOSTNAME>
 
 ### Enable priviledged gateway for message content
 - Go to to https://discord.com/developers/applications/
