@@ -21,7 +21,7 @@ echo ""
 echo "Setting MySQL host..."
 echo "MYSQL_HOST=\"mysql_container\"" >> .env
 
-# Step 2: Build container images - TODO FROM HERE !!!!!!!!!!!!!!!!!!!!!
+# Step 2: Build container images
 echo "Creating the MySQL Image..."
 
 # If the image doesn't already exist, create it
@@ -38,3 +38,8 @@ fi
 if ! docker network inspect discord_bot_network > /dev/null 2>&1; then
   docker network create discord_bot_network
 fi
+
+echo "Build complete."
+
+chmod +x up
+chmod +x down

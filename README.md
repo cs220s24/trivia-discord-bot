@@ -1,7 +1,7 @@
 # trivia-discord-bot
 A fun discord bot that inquires trivia questions for users to interact with. Users can start a quiz to begin the game & find out their score. 
 
-## System Architecture: 
+## System Architecture
 ![diagram](triviaDiagramDockerized.png)
 
 ### Contributers:
@@ -12,21 +12,13 @@ A fun discord bot that inquires trivia questions for users to interact with. Use
 
 ### Prerequisites
 
+- Amazon Web Services (AWS) | ([Website](https://aws.amazon.com/?nc2=h_lg))
 - Discord | ([Website](https://discord.com))
 - MySQL | ([Download](https://dev.mysql.com/downloads/mysql/), [Set-Up Tutorial](https://dev.mysql.com/doc/mysql-getting-started/en/))
 
-# Installation - Run the bot locally
+## Creating A Discord Bot
 
-### 0. Clone the repo
-Once you are all set up, press the green **<> Code** button to gain a link to clone the repository.
-
-Then, open your preferred [IDE](https://aws.amazon.com/what-is/ide/) or a [Command Line Interface](https://en.wikipedia.org/wiki/Command-line_interface#:~:text=A%20command%2Dline%20interface%20\(CLI,interface%20available%20with%20punched%20cards.) and clone the repository with the following command:
-
-```
-git clone https://github.com/cs220s24/trivia-discord-bot.git
-```
-
-### 1. Create a new Discord bot
+### 1. Create a new bot in Developer Portal
 Go to the [Discord Developer Portal](https://discord.com/developers/applications) and click the **New Application** button to create a new Discord bot.
 
 ### 2. Set bot permissions
@@ -43,20 +35,7 @@ In the **Bot** tab, locate the **Build-A-Bot** section. Locate the **Token** por
 
 ***Note:** Tokens can only be viewed once. Be sure to save your token somewhere safe, as if you ever need it again, you will need to generate a new one.*
 
-### 4. Run `setup_bot.sh`
-Go into your preferred terminal and enter the **`trivia-discord-bot`** repository.
-
-Run the following command:
-
-```
-sh setup_bot.sh
-```
-
-Follow the instruction prompts given in the terminal. This will complete all the necessary set-up for the bot to run.
-
-If successful, the bot should now be connected to your Discord server.
-
-### 5. Add your bot to your Discord server
+### 4. Add your bot to your Discord server
 Locate the **OAuth2** tab on the left-hand side of the **Settings**.
 
 Under the **OAuth2 URL Generator** section, select "**bot**" under **Scopes**.
@@ -67,8 +46,30 @@ Once done, locate **Generated URL** and press the **Copy** button to gain a link
 
 Go to that URL and select the Discord server(s) you want to add the bot to.
 
-### 6. Run the bot
-The bot should now successfully be added and running!
+# Local Installation Tutorial
+
+### 1. Clone the repo
+Once you are all set up, press the green **<> Code** button to gain a link to clone the repository.
+
+Then, open your preferred [IDE](https://aws.amazon.com/what-is/ide/) or a [Command Line Interface](https://en.wikipedia.org/wiki/Command-line_interface#:~:text=A%20command%2Dline%20interface%20\(CLI,interface%20available%20with%20punched%20cards.) and clone the repository with the following command:
+
+```
+git clone https://github.com/cs220s24/trivia-discord-bot.git
+```
+
+### 1. Run `setup_bot_local.sh`
+Go into your preferred terminal and enter the **`trivia-discord-bot`** repository.
+
+Run the following command:
+
+```
+sh setup_bot_local.sh
+```
+
+Follow the instruction prompts given in the terminal. This will complete all the necessary set-up for the bot to run.
+
+### 2. Run the bot
+The bot should now successfully be up and running!
 
 You can test this by posting the message **`ping`**. The bot should respond with **`pong!`**.
 
@@ -78,9 +79,10 @@ To play a brief quiz with the bot, post the message **`start quiz`**.
 
 ### .env file
 - Grab your discord bot's token and put it in the .env file with
-- DISCORD_TOKEN = <DISCORD_TOKEN>
-- MYSQL_USERNAME= <PASSWORD>
-- MYSQL_PASSWORD= <USERNAME>
+- DISCORD_TOKEN =<DISCORD_TOKEN>
+- MYSQL_USERNAME=<PASSWORD>
+- MYSQL_ROOT_PASSWORD=<USERNAME>
+- MYSQL_HOST =<HOSTNAME>
 
 ### Enable priviledged gateway for message content
 - Go to to https://discord.com/developers/applications/
@@ -185,7 +187,7 @@ python3 main.py
 - docker restart mysql_container (the <mysql_container_name>)
 - docker build -t discord_bot . (This builds the image for the discord_bot)
 - docker run -d --name trivia_bot discord_bot (This creates the container and runs it)
-- docker network create discord_bot (Creates a network where the mysql and discord_bot containers will be in)
+- docker network create discord_bot_network (Creates a network where the mysql and discord_bot containers will be in)
 - docker network connect discord_bot_network trivia_bot <the discord_bot container name>
 - docker exec -it mysql_container  mysql -u root -p (we need to populate the database for the docker mysql). Password will be whatever you passed for MYSQL_ROOT_PASSWORD
 - CREATE DATABASE trivia_db;
