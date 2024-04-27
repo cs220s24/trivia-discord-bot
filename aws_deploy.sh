@@ -17,7 +17,7 @@ sudo usermod -a -G docker ec2-user
 echo ""
 echo "*********************************************************************"
 echo "To apply changes, you must log out and reconnect to the EC2 instance."
-echo "Once you do, go into the repository and run:"
+echo "Once you do, go back into the repository and run:"
 echo ""
 echo "sh build.sh"
 echo ""
