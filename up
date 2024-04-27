@@ -17,3 +17,4 @@ echo "MySQL server is ready."
 echo "Enter the MySQL root password you set when prompted."
 docker exec -it mysql_container mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS trivia_db; USE trivia_db; CREATE TABLE IF NOT EXISTS trivia_questions ( id INT AUTO_INCREMENT PRIMARY KEY, question VARCHAR(255) NOT NULL, answer VARCHAR(255) NOT NULL ); INSERT INTO trivia_questions (question, answer) VALUES ('Are brownies good? Respond \"YES\" or \"NO\"', 'Yes'), ('What country was I created in?', 'US'), ('What class was I developed for?', 'DevOps'), ('What is the capital of France?', 'Paris'), ('What question number is this?', '5');"
 docker network connect discord_bot_network mysql_container
+echo "Trivia bot is now running! You can use ./down to stop the bot, and ./up to start it again!"
