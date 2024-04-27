@@ -204,3 +204,14 @@ answer VARCHAR(255) NOT NULL
 ('What question number is this?', '5');
 - exit
 - docker network connect discord_bot_network mysql_container
+
+
+### Running Bot with Docker on Ec2 with Scripts!
+- sudo yum install -y git (Install git)
+- git clone <REPO> (Clone the repo)
+- cd trivia-discord-bot (Go into the repository)
+- sh aws_deploy.sh (Installs docker and adds ec2-user to the Docker group)
+- Logout, and log back into the ec2 instance and cd back into trivia-discord-bot
+- sh build.sh (Creates the images for MySQL and the discord bot as well as the .env with user input)
+- ./up (Starts the containers!)
+- If you want to stop the bot and remove the containers, you can use ./down. You can always start it again with ./up
