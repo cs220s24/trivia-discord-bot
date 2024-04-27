@@ -183,7 +183,6 @@ python3 main.py
     MYSQL_HOST="mysql_container" <CONTAINER NAME> (We are just using mysql_container for the container name)
 - docker pull mysql
 - docker run -d --name mysql_container -e MYSQL_ROOT_PASSWORD=<password_for_root> -p 3306:3306 mysql
-- docker restart mysql_container (the <mysql_container_name>)
 - docker build -t discord_bot . (This builds the image for the discord_bot)
 - docker run -d --name trivia_bot discord_bot (This creates the container and runs it)
 - docker network create discord_bot_network (Creates a network where the mysql and discord_bot containers will be in)
