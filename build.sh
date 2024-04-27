@@ -19,7 +19,7 @@ echo "MYSQL_ROOT_PASSWORD=\"$mysql_root_password\"" >> .env
 
 echo ""
 echo "Setting MySQL host..."
-echo "MYSQL_HOST=\"mysql_container\"" >> .env
+echo "MYSQL_HOST=mysql_container" >> .env
 
 # Step 2: Build container images
 echo "Creating the MySQL Image..."
