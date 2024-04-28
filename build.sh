@@ -11,10 +11,10 @@ echo "DISCORD_GUILD=\"$discord_guild\"" >> .env
 
 echo ""
 echo "Creating MySQL connection details..."
-echo "Setting MYSQL username to root..."
+echo "Setting MySQL username to \"root\"..."
 echo "MYSQL_USERNAME="root"" >> .env
 
-read -sp "Enter your MySQL root password: " mysql_root_password
+read -sp "Set your MySQL root password: " mysql_root_password
 echo "MYSQL_ROOT_PASSWORD=\"$mysql_root_password\"" >> .env
 
 echo ""
@@ -40,7 +40,11 @@ if ! docker network inspect discord_bot_network > /dev/null 2>&1; then
 fi
 
 echo "Build complete."
-echo "Next run ./up to start the containers."
+echo ""
+
+echo "*********************************************************************"
+echo "Next, run ./up to start the containers."
+echo "*********************************************************************"
 
 chmod +x up
 chmod +x down

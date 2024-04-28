@@ -1,2 +1,4 @@
+# Remove the containers
+# -f forcefully removes the container
 docker rm -f trivia_bot
 docker rm -f mysql_container
