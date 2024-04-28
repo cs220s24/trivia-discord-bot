@@ -85,6 +85,50 @@ You can test this by posting the message **`ping`**. The bot should respond with
 
 To play a brief quiz with the bot, post the message **`start quiz`**.
 
+# AWS EC2 Instance Installation Tutorial (without Docker)
+
+### 1. Create a new EC2 instance
+If you haven't already, create a new EC2 instance on [Amazon Web Services](https://aws.amazon.com/?nc2=h_lg).
+
+Once created, `ssh` into the instance in your preferred [Command Line Interface](https://en.wikipedia.org/wiki/Command-line_interface#:~:text=A%20command%2Dline%20interface%20\(CLI,interface%20available%20with%20punched%20cards.) with the following command:
+
+```
+ssh -i ~/.ssh/labsuser.pem ec2-user@<PUBLIC IPv4 ADDRESS>
+```
+
+### 2. Clone the repo
+Once you are all set up, install `git` in the EC2 instance with the following command:
+
+```
+sudo yum install -y git
+```
+
+Afterwards, press the green **<> Code** button to gain a link to clone the repository.
+
+Then, open your preferred [IDE](https://aws.amazon.com/what-is/ide/) or a [Command Line Interface](https://en.wikipedia.org/wiki/Command-line_interface#:~:text=A%20command%2Dline%20interface%20\(CLI,interface%20available%20with%20punched%20cards.) and clone the repository with the following command:
+
+```
+git clone https://github.com/cs220s24/trivia-discord-bot.git
+```
+
+### 3. Run `setup_bot_EC2.sh`
+Now, enter the **`trivia-discord-bot`** repository in the EC2 instance.
+
+Run the following command:
+
+```
+sh setup_bot_EC2.sh
+```
+
+Follow the instruction prompts given in the terminal. This will complete all the necessary set-up for the bot to run.
+
+### 4. Run the bot
+The bot should now successfully be up and running on the EC2 instance!
+
+You can test this by posting the message **`ping`**. The bot should respond with **`"pong!"`**.
+
+To play a brief quiz with the bot, post the message **`start quiz`**.
+
 # OTHER INFO
 
 ### .env file
@@ -93,12 +137,6 @@ To play a brief quiz with the bot, post the message **`start quiz`**.
 - MYSQL_USERNAME=<PASSWORD>
 - MYSQL_ROOT_PASSWORD=<USERNAME>
 - MYSQL_HOST =<HOSTNAME>
-
-### Enable priviledged gateway for message content
-- Go to to https://discord.com/developers/applications/
-- Go to bots on the left hand side
-- Find Privileged Gateway Intents
-- Under Message Content Intent, switch it on
 
 ### Running on an AWS Instance WITHOUT Docker
 - Launch AWS Learning Academy Lab
