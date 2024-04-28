@@ -1,8 +1,15 @@
 # trivia-discord-bot
-A fun discord bot that inquires trivia questions for users to interact with. Users can start a quiz to begin the game & find out their score. 
+A fun Discord bot that inquires trivia questions for users to interact with. Users can start a quiz to begin the game and find out their score.
+
+Final project designed for *CSCI 220.2: Intro to DevOps.*
 
 ## System Architecture
 ![diagram](triviaDiagramDockerized.png)
+
+### Commands:
+- `ping` - The bot responds with `"pong!"`
+- `whoami` - The bot responds with `"You are [YOUR USERNAME]!"`
+- `start quiz` - The bot begins a brief 5-question quiz. It tells you your final score at the end of it.
 
 ### Contributers:
 - [Christine Colvin](https://github.com/christinecolvin)
@@ -15,6 +22,9 @@ A fun discord bot that inquires trivia questions for users to interact with. Use
 - Amazon Web Services (AWS) | ([Website](https://aws.amazon.com/?nc2=h_lg))
 - Discord | ([Website](https://discord.com))
 - MySQL | ([Download](https://dev.mysql.com/downloads/mysql/), [Set-Up Tutorial](https://dev.mysql.com/doc/mysql-getting-started/en/))
+
+### References:
+- [How to Make a Discord Bot in Python](https://realpython.com/how-to-make-a-discord-bot-python/) by Alex Ronquillo
 
 ## Creating A Discord Bot
 
@@ -57,7 +67,7 @@ Then, open your preferred [IDE](https://aws.amazon.com/what-is/ide/) or a [Comma
 git clone https://github.com/cs220s24/trivia-discord-bot.git
 ```
 
-### 1. Run `setup_bot_local.sh`
+### 2. Run `setup_bot_local.sh`
 Go into your preferred terminal and enter the **`trivia-discord-bot`** repository.
 
 Run the following command:
@@ -68,10 +78,10 @@ sh setup_bot_local.sh
 
 Follow the instruction prompts given in the terminal. This will complete all the necessary set-up for the bot to run.
 
-### 2. Run the bot
+### 3. Run the bot
 The bot should now successfully be up and running!
 
-You can test this by posting the message **`ping`**. The bot should respond with **`pong!`**.
+You can test this by posting the message **`ping`**. The bot should respond with **`"pong!"`**.
 
 To play a brief quiz with the bot, post the message **`start quiz`**.
 
