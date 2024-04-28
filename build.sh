@@ -11,7 +11,7 @@ echo "DISCORD_GUILD=\"$discord_guild\"" >> .env
 
 echo ""
 echo "Creating MySQL connection details..."
-echo "Setting MYSQL username to \"root\"..."
+echo "Setting MySQL username to \"root\"..."
 echo "MYSQL_USERNAME="root"" >> .env
 
 read -sp "Set your MySQL root password: " mysql_root_password
