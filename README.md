@@ -90,7 +90,7 @@ To play a brief quiz with the bot, post the message **`start quiz`**.
 - Find Privileged Gateway Intents
 - Under Message Content Intent, switch it on
 
-### Running on an AWS Instance
+### Running on an AWS Instance WITHOUT Docker
 - Launch AWS Learning Academy Lab
 - Create an instance with Voc-key and allow HTTP Traffic--other default settings are fine
 - When the insance is up and running, grab its Public IPv4 address
@@ -120,43 +120,9 @@ git clone https://github.com/cs220s24/trivia-discord-bot.git
 python3 main.py
 ```
 
-### ACTIVATING MYSQL / MARIADB in EC2 INSTANCE
-
-- sudo dnf install mariadb105-server (105 may or may not be necessary, have to check)
-- sudo systemctl start mariadb
-- sudo mysql_secure_installation
-- Interactive part:
-    - Press enter when prompted for password for root
-    - Switch to socket authentication: n
-    - Change the root password: n
-    - Remove anonymous users: Y
-    - Disallow root login remotely: Y
-    - Remove test database and access to it: Y
-    - Reload privilege tables: Y
-- sudo mysql -u root -p
-    - For password just enter, it's empty
-    - ALTER USER 'root'@'localhost' IDENTIFIED BY 'root'; (because you need a password)
--   CREATE DATABASE trivia_db;
--   USE trivia_db;
-- CREATE TABLE trivia_questions (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    question VARCHAR(255) NOT NULL,
-    answer VARCHAR(255) NOT NULL
-);
-- INSERT INTO trivia_questions (question, answer) VALUES
-('Are brownies good? Respond "YES" or "NO"', 'Yes'),
-('What country was I created in?', 'US'),
-('What class was I developed for?', 'DevOps'),
-('What is the capital of France?', 'Paris'),
-('What question number is this?', '5');
-- exit
-- sudo systemctl stop mariadb
-- sudo systemctl enable mariadb
-- sudo systemctl start mariadb
-
 ### SYSTEMD
 
-- Follow all of the steps to run the AWS instance.
+- These steps can be used locally to copy the discord_bot.service file to the system path and run it on systemd
   ```
   sudo cp discord_bot.service /etc/systemd/system
   ```
@@ -167,45 +133,6 @@ python3 main.py
   sudo systemctl start discord_bot.service
   ```
 
-### Docker on AWS
-- sudo yum install -y git
-- git clone <REPO>
-- sudo yum install -y docker
-- sudo systemctl enable docker
-- sudo systemctl start docker
-- sudo usermod -a -G docker ec2-user
-- ***Now the user must logout of the Ec2 instance and log back in***
-- cd trivia-discord-bot
-- nano .env
-    DISCORD_TOKEN=<TOKEN>
-    DISCORD_GUILD=<SERVER_NAME>
-    MYSQL_USERNAME=<USERNAME>
-    MYSQL_PASSWORD=<PASSWORD>
-    MYSQL_HOST="mysql_container" <CONTAINER NAME> (We are just using mysql_container for the container name)
-- docker pull mysql
-- docker run -d --name mysql_container -e MYSQL_ROOT_PASSWORD=<password_for_root> -p 3306:3306 mysql
-- docker build -t discord_bot . (This builds the image for the discord_bot)
-- docker run -d --name trivia_bot discord_bot (This creates the container and runs it)
-- docker network create discord_bot_network (Creates a network where the mysql and discord_bot containers will be in)
-- docker network connect discord_bot_network trivia_bot <the discord_bot container name>
-- docker exec -it mysql_container  mysql -u root -p (we need to populate the database for the docker mysql). Password will be whatever you passed for MYSQL_ROOT_PASSWORD
-- CREATE DATABASE trivia_db;
-- USE trivia_db;
-- CREATE TABLE trivia_questions (
-id INT AUTO_INCREMENT PRIMARY KEY,
-question VARCHAR(255) NOT NULL,
-answer VARCHAR(255) NOT NULL
-);
-- INSERT INTO trivia_questions (question, answer) VALUES
-('Are brownies good? Respond "YES" or "NO"', 'Yes'),
-('What country was I created in?', 'US'),
-('What class was I developed for?', 'DevOps'),
-('What is the capital of France?', 'Paris'),
-('What question number is this?', '5');
-- exit
-- docker network connect discord_bot_network mysql_container
-
-
 ### Running Bot with Docker on Ec2 with Scripts!
 - sudo yum install -y git (Install git)
 - git clone <REPO> (Clone the repo)
@@ -215,3 +142,4 @@ answer VARCHAR(255) NOT NULL
 - sh build.sh (Creates the images for MySQL and the discord bot as well as the .env with user input)
 - ./up (Starts the containers!)
 - If you want to stop the bot and remove the containers, you can use ./down. You can always start it again with ./up
+
