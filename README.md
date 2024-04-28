@@ -143,3 +143,20 @@ python3 main.py
 - ./up (Starts the containers!)
 - If you want to stop the bot and remove the containers, you can use ./down. You can always start it again with ./up
 
+### Developer Workflow
+
+- We collaborated via Discord calls to update each other on important changes to the project
+- We utilized Git and GitHub to effectively push updated code and allowed people to be able to work on individual tasks
+- We also peer reviewed pushed code, and tested code that others pushed, such as the scripts, to make sure everything worked.
+- In order to start making contributions on the project, you have to:
+    - Clone the repository
+    - Create a virtual environment and make the necessary installations with:
+        - python3 -m venv .venv
+        - source .venv/bin/activate
+        - pip install -r requirements.txt
+    - Create a .env file with the necessary information
+    - DISCORD_TOKEN =<DISCORD_TOKEN> (This will be specific to the discord bot being developed. In order to develop our discord bot, you would have to request the discord token from one of us)
+    - MYSQL_USERNAME=<PASSWORD> (This is the username that you will be using to log into MySQl)
+    - MYSQL_ROOT_PASSWORD=<USERNAME> (This is the password that you will be using to log into MySQL)
+    - MYSQL_HOST =<HOSTNAME> (This is the host MySQL will connect to. This will be localhost if you are running it locally)
+    - Now you can successfully make contributions to the Trivia Bot!
