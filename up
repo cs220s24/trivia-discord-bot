@@ -6,9 +6,9 @@ docker run -d --name trivia_bot discord_bot
 docker network connect discord_bot_network trivia_bot
 
 # Wait for MySQL server to be ready
-echo "Waiting for MySQL server to be ready..."
 
 # Continuously check if the MySQL server is ready to accept queries
+echo "Waiting for MySQL server to be ready... (This will take about 20 seconds)"
 until docker exec mysql_container mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "SELECT 1" &>/dev/null; do
     echo "MySQL server is not ready yet. Retrying in 5 seconds..."
     sleep 5
