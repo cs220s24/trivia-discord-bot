@@ -17,7 +17,7 @@ Final project designed for *CSCI 220.2: Intro to DevOps.*
 - [Rafael Garcia Jr.](https://github.com/RGJ-713)
 - [Michael Romero](https://github.com/MichaelRomero1)
 
-### Prerequisites
+### Prerequisites:
 
 - Amazon Web Services (AWS) | ([Website](https://aws.amazon.com/?nc2=h_lg))
 - Discord | ([Website](https://discord.com))
@@ -90,10 +90,10 @@ To play a brief quiz with the bot, post the message **`start quiz`**.
 ### 1. Create a new EC2 instance
 If you haven't already, create a new EC2 instance on [Amazon Web Services](https://aws.amazon.com/?nc2=h_lg).
 
-Once created, `ssh` into the instance in your preferred [Command Line Interface](https://en.wikipedia.org/wiki/Command-line_interface#:~:text=A%20command%2Dline%20interface%20\(CLI,interface%20available%20with%20punched%20cards.) with the following command:
+Once created, `ssh` into the instance in a [Command Line Interface](https://en.wikipedia.org/wiki/Command-line_interface#:~:text=A%20command%2Dline%20interface%20\(CLI,interface%20available%20with%20punched%20cards.) with the following command:
 
 ```
-ssh -i ~/.ssh/labsuser.pem ec2-user@<PUBLIC IPv4 ADDRESS>
+ssh -i ~/.ssh/labsuser.pem ec2-user@<PUBLIC IPv4 ADDRESS HERE>
 ```
 
 ### 2. Clone the repo
@@ -105,7 +105,7 @@ sudo yum install -y git
 
 Afterwards, press the green **<> Code** button to gain a link to clone the repository.
 
-Then, open your preferred [IDE](https://aws.amazon.com/what-is/ide/) or a [Command Line Interface](https://en.wikipedia.org/wiki/Command-line_interface#:~:text=A%20command%2Dline%20interface%20\(CLI,interface%20available%20with%20punched%20cards.) and clone the repository with the following command:
+Then, in your Command Line Interface, clone the repository with the following command:
 
 ```
 git clone https://github.com/cs220s24/trivia-discord-bot.git
@@ -129,82 +129,118 @@ You can test this by posting the message **`ping`**. The bot should respond with
 
 To play a brief quiz with the bot, post the message **`start quiz`**.
 
-# OTHER INFO
+# AWS EC2 Instance Installation Tutorial (with Docker)
 
-### .env file
-- Grab your discord bot's token and put it in the .env file with
-- DISCORD_TOKEN =<DISCORD_TOKEN>
-- MYSQL_USERNAME=<PASSWORD>
-- MYSQL_ROOT_PASSWORD=<USERNAME>
-- MYSQL_HOST =<HOSTNAME>
+### 1. Create a new EC2 instance
+If you haven't already, create a new EC2 instance on [Amazon Web Services](https://aws.amazon.com/?nc2=h_lg).
 
-### Running on an AWS Instance WITHOUT Docker
-- Launch AWS Learning Academy Lab
-- Create an instance with Voc-key and allow HTTP Traffic--other default settings are fine
-- When the insance is up and running, grab its Public IPv4 address
-- In a new terminal window, use the command: 
+Once created, `ssh` into the instance in a [Command Line Interface](https://en.wikipedia.org/wiki/Command-line_interface#:~:text=A%20command%2Dline%20interface%20\(CLI,interface%20available%20with%20punched%20cards.) with the following command:
+
 ```
-ssh -i ~/.ssh/labsuser.pem ec2-user@<Public IPv4 address>
+ssh -i ~/.ssh/labsuser.pem ec2-user@<PUBLIC IPv4 ADDRESS HERE>
 ```
-- Then use the command: 
+
+### 2. Clone the repo
+Once you are all set up, install `git` in the EC2 instance with the following command:
+
 ```
-sudo yum install git
+sudo yum install -y git
 ```
-- Once git is installed, clone the repo with: 
+
+Afterwards, press the green **<> Code** button to gain a link to clone the repository.
+
+Then, in your Command Line Interface, clone the repository with the following command:
+
 ```
 git clone https://github.com/cs220s24/trivia-discord-bot.git
 ```
-- CD into the repo
-- Create your .env file with: nano .env
-- Follow the steps from the .env file above
-- Create a virtual environment and install dependencies with:
+
+### 3. Run `AWS_deploy.sh`
+Now, enter the **`trivia-discord-bot`** repository in the EC2 instance.
+
+Run the following command:
+
 ```
-1. python3 -m venv .venv
-2. source .venv/bin/activate
-3. pip install -r requirements.txt
-```
-- Finally run the program using: 
-```
-python3 main.py
+sh AWS_deploy.sh
 ```
 
-### SYSTEMD
+Follow the instructions given in the terminal.
 
-- These steps can be used locally to copy the discord_bot.service file to the system path and run it on systemd
-  ```
-  sudo cp discord_bot.service /etc/systemd/system
-  ```
-  ```
-  sudo systemctl enable discord_bot.service
-  ```
-  ```
-  sudo systemctl start discord_bot.service
-  ```
+***Note:** You will have to log out and log back in to the EC2 instance to apply the changes made by the script.*
 
-### Running Bot with Docker on Ec2 with Scripts!
-- sudo yum install -y git (Install git)
-- git clone <REPO> (Clone the repo)
-- cd trivia-discord-bot (Go into the repository)
-- sh aws_deploy.sh (Installs docker and adds ec2-user to the Docker group)
-- Logout, and log back into the ec2 instance and cd back into trivia-discord-bot
-- sh build.sh (Creates the images for MySQL and the discord bot as well as the .env with user input)
-- ./up (Starts the containers!)
-- If you want to stop the bot and remove the containers, you can use ./down. You can always start it again with ./up
+### 4. Run `build.sh`
+Once you've logged back in, enter the repository again and run the following command:
 
-### Developer Workflow
+```
+sh build.sh
+```
 
-- We collaborated via Discord calls to update each other on important changes to the project
-- We utilized Git and GitHub to effectively push updated code and allowed people to be able to work on individual tasks
-- We also peer reviewed pushed code, and tested code that others pushed, such as the scripts, to make sure everything worked.
+Follow the instruction prompts given in the terminal. This will build the docker images for the containers that the bot will use to run.
+
+### 5. Run `./up` to start the bot
+The bot should now successfully be ready to run on the EC2 instance!
+
+Type in the following command to **start up** the containers:
+
+```
+./up
+```
+
+This may take a moment (approximately 20 seconds), so just be patient if the bot doesn't immediately connect to the database.
+
+Type in the following command to **stop and remove** the containers:
+
+```
+./down
+```
+
+# Additional Info
+
+### `.env` file
+Each script automatically creates a `.env` file to hold your credentials. Should you feel the need to create this manually, the `.env` must contain the following:
+```
+DISCORD_TOKEN=<DISCORD BOT TOKEN HERE>
+DISCORD_GUILD=<DISCORD SERVER NAME HERE>
+MYSQL_USERNAME=<MySQL USERNAME HERE>
+MYSQL_ROOT_PASSWORD=<MySQL ROOT PASSWORD HERE>
+MYSQL_HOST=<MySQL HOST NAME HERE>
+```
+
+### Manual Systemd Commands
+These steps can be used locally to copy the `discord_bot.service` file to the `system` path to run it on systemd:
+```
+sudo cp discord_bot.service /etc/systemd/system
+```
+```
+sudo systemctl enable discord_bot.service
+```
+```
+sudo systemctl start discord_bot.service
+```
+
+# Developer Workflow
+- Git and GitHub was utilized to effectively push updated code and allow team members to be able to work on individual tasks.
+- Discord calls were made to collaborate and update each other on important changes to the project.
+- Peer review of pushed code was frequent, as well as testing the code that others pushed (such as the scripts) to make sure everything worked.
+  
 - In order to start making contributions on the project, you have to:
     - Clone the repository
     - Create a virtual environment and make the necessary installations with:
-        - python3 -m venv .venv
-        - source .venv/bin/activate
-        - pip install -r requirements.txt
-    - Create a .env file with the necessary information
-    - DISCORD_TOKEN =<DISCORD_TOKEN> (This will be specific to the discord bot being developed. In order to develop our discord bot, you would have to request the discord token from one of us)
-    - MYSQL_USERNAME=<PASSWORD> (This is the username that you will be using to log into MySQl)
-    - MYSQL_ROOT_PASSWORD=<USERNAME> (This is the password that you will be using to log into MySQL)
-    - MYSQL_HOST =<HOSTNAME> (This is the host MySQL will connect to. This will be localhost if you are running it locally)
-    - Now you can successfully make contributions to the Trivia Bot!
+      
+      ```
+      python3 -m venv .venv
+      source .venv/bin/activate
+      pip install -r requirements.txt
+      ```
+
+    - Create a `.env` file with the necessary information:
+ 
+      ```
+      DISCORD_TOKEN=<DISCORD BOT TOKEN HERE> (This will be specific to the Discord bot being developed. In order to develop our Discord bot, you would have to request the Discord bot token from one of us.)
+      DISCORD_GUILD=<DISCORD SERVER NAME HERE> (This will be specific to the Discord server you want to connect the bot to.)
+      MYSQL_USERNAME=<MySQL USERNAME HERE> (This is the username that you will be using to log into MySQL.)
+      MYSQL_ROOT_PASSWORD=<MySQL ROOT PASSWORD HERE> (This is the password that you will be using to log into MySQL.)
+      MYSQL_HOST=<MySQL HOST NAME HERE> (This is the host MySQL will connect to. This will be "localhost" if you are running it locally.)
+      ```
+
+- Now, you can successfully make contributions to the Discord Trivia Bot!
